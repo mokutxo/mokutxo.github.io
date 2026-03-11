@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mokutxo — Built with precision. Made with purpose.</title>
+  <meta name="description" content="Mokutxo designs and builds things that solve real problems — physical products, iOS apps, and the tools in between." />
+
+  <!-- Fonts -->
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --terracotta: #CC5A4A;
+      --navy: #23313E;
+      --cream: #F5EDD8;
+      --golden: #DDA570;
+      --cream-dark: #EDE0C4;
+      --navy-light: #2E3F50;
+      --text: #1A2530;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--text);
+      font-family: 'Satoshi', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(245, 237, 216, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(35, 49, 62, 0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      gap: 4rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(221, 165, 112, 0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(204, 90, 74, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--terracotta);
+    }
+
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--navy);
+      opacity: 0.65;
+      max-width: 420px;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--navy);
+      color: var(--cream);
+      padding: 0.9rem 2rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: var(--terracotta);
+      transform: translateY(-2px);
+    }
+
+    .hero-cta svg { transition: transform 0.2s; }
+    .hero-cta:hover svg { transform: translateX(4px); }
+
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-logo-wrap {
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-16px); }
+    }
+
+    .hero-logo-wrap img {
+      width: min(420px, 100%);
+      filter: drop-shadow(0 32px 64px rgba(35, 49, 62, 0.18));
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -1rem;
+      right: 1rem;
+      background: var(--terracotta);
+      color: var(--cream);
+      padding: 0.6rem 1.2rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: float 6s ease-in-out infinite;
+      animation-delay: -3s;
+    }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      background: var(--navy);
+      padding: 1rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 20s linear infinite;
+    }
+
+    .marquee-track span {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.5;
+      padding: 0 3rem;
+    }
+
+    .marquee-track span.accent {
+      color: var(--golden);
+      opacity: 1;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 8rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 6rem;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      padding-top: 0.5rem;
+    }
+
+    .about-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      color: var(--navy);
+      opacity: 0.7;
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    /* PILLARS */
+    .pillars {
+      padding: 0 3rem 8rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pillars-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      border-top: 1px solid rgba(35, 49, 62, 0.15);
+      padding-top: 2rem;
+    }
+
+    .pillars-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--navy);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(35, 49, 62, 0.12);
+    }
+
+    .pillar {
+      background: var(--cream);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .pillar::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--golden);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .pillar:hover { background: #efe6ce; }
+    .pillar:hover::after { transform: scaleX(1); }
+
+    .pillar-icon {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .pillar-name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .pillar p {
+      font-size: 0.95rem;
+      color: var(--navy);
+      opacity: 0.65;
+      line-height: 1.7;
+    }
+
+    .pillar-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: 0.4;
+    }
+
+    .pillar-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--golden);
+    }
+
+    /* VALUES */
+    .values {
+      background: var(--navy);
+      padding: 8rem 3rem;
+    }
+
+    .values-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .values h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .values h2 em {
+      font-style: italic;
+      color: var(--golden);
+    }
+
+    .values-lead {
+      font-size: 1.05rem;
+      color: var(--cream);
+      opacity: 0.6;
+      line-height: 1.8;
+    }
+
+    .values-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .values-list li {
+      padding: 1.75rem 0;
+      border-bottom: 1px solid rgba(245, 237, 216, 0.1);
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .values-list li:first-child { border-top: 1px solid rgba(245, 237, 216, 0.1); }
+
+    .values-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--golden);
+      padding-top: 0.2rem;
+    }
+
+    .values-list h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.35rem;
+    }
+
+    .values-list p {
+      font-size: 0.875rem;
+      color: var(--cream);
+      opacity: 0.5;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--cream-dark);
+      padding: 4rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(35, 49, 62, 0.1);
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .footer-location {
+      font-size: 0.8rem;
+      color: var(--navy);
+      opacity: 0.5;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--navy);
+      opacity: 0.4;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 3rem;
+        text-align: center;
+      }
+
+      .hero-eyebrow { justify-content: center; }
+      .hero-subtitle { margin: 0 auto 2.5rem; }
+      .hero-visual { order: -1; }
+      .hero-logo-wrap img { width: 240px; }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 5rem 1.5rem;
+      }
+
+      .pillars { padding: 0 1.5rem 5rem; }
+      .pillars-grid { grid-template-columns: 1fr; }
+
+      .values-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .values { padding: 5rem 1.5rem; }
+
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 3rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Mokutxo</a>
+    <ul class="nav-links">
+      <li><a href="#pillars">What we make</a></li>
+      <li><a href="#values">Values</a></li>
+      <li><a href="mailto:mokutxo@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content reveal">
+      <p class="hero-eyebrow">Irun, Basque Country</p>
+      <h1 class="hero-title">
+        Built with<br><em>precision.</em><br>Made with purpose.
+      </h1>
+      <p class="hero-subtitle">
+        We design and build things that solve real problems — physical products, iOS apps, and the tools in between.
+      </p>
+      <a href="#pillars" class="hero-cta">
+        What we make
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hero-logo-wrap">
+        <img src="logo.png" alt="Mokutxo — modular interlocking symbol" />
+        <div class="hero-badge">Est. 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Arima</span><span class="accent">·</span>
+      <span>Tangible</span><span class="accent">·</span>
+      <span>Syntax</span><span class="accent">·</span>
+      <span>3D Printing</span><span class="accent">·</span>
+      <span>iOS Apps</span><span class="accent">·</span>
+      <span>Hardware</span><span class="accent">·</span>
+      <span>Basque Country</span><span class="accent">·</span>
+      <span>Arima</span><span class="accent">·</span>
+      <span>Tangible</span><span class="accent">·</span>
+      <span>Syntax</span><span class="accent">·</span>
+      <span>3D Printing</span><span class="accent">·</span>
+      <span>iOS Apps</span><span class="accent">·</span>
+      <span>Hardware</span><span class="accent">·</span>
+      <span>Basque Country</span><span class="accent">·</span>
+    </div>
+  </div>
+
+  <section class="about">
+    <p class="section-label reveal">About</p>
+    <div class="about-text reveal">
+      <h2>Small studio.<br>Real products.</h2>
+      <p>
+        Mokutxo was born from the intersection of hands-on making and digital craftsmanship.
+        We approach every project the way a Sashimono craftsman approaches joinery — with patience,
+        precision, and no shortcuts. Things built to last, designed to be used.
+      </p>
+    </div>
+  </section>
+
+  <section class="pillars" id="pillars">
+    <div class="pillars-header reveal">
+      <h2>What we make</h2>
+      <span class="section-label">Three pillars</span>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <span class="pillar-icon">🪴</span>
+        <p class="pillar-name">Arima</p>
+        <h3>Physical products</h3>
+        <p>3D printed home objects designed for real use — not decoration. Every piece is functional, precise, and built to last.</p>
+        <span class="pillar-status">In development</span>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar-icon">🔧</span>
+        <p class="pillar-name">Tangible</p>
+        <h3>Hardware meets software</h3>
+        <p>Physical products with a digital brain. Electronics, enclosures, and the iOS apps that bring them to life.</p>
+        <span class="pillar-status">In development</span>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar-icon">📱</span>
+        <p class="pillar-name">Syntax</p>
+        <h3>iOS apps</h3>
+        <p>Utility apps built clean, accessible from day one, focused on solving one thing exceptionally well. First app: SnapRef.</p>
+        <span class="pillar-status">In development</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="values" id="values">
+    <div class="values-inner">
+      <div class="reveal">
+        <h2>How we<br>work &amp;<br><em>why it matters.</em></h2>
+        <p class="values-lead">
+          A small studio moves fast and ships real things.
+          These are the principles that keep us honest.
+        </p>
+      </div>
+      <ul class="values-list reveal">
+        <li>
+          <span class="values-num">01</span>
+          <div>
+            <h4>Accessible by default</h4>
+            <p>Every product we ship works for everyone — VoiceOver, Dynamic Type, color blindness, ADHD-friendly. Not an afterthought.</p>
+          </div>
+        </li>
+        <li>
+          <span class="values-num">02</span>
+          <div>
+            <h4>Privacy first</h4>
+            <p>Your data stays on your device. We don't collect what we don't need.</p>
+          </div>
+        </li>
+        <li>
+          <span class="values-num">03</span>
+          <div>
+            <h4>Built to last</h4>
+            <p>We'd rather ship one solid product than ten half-finished ones. Quality over volume, always.</p>
+          </div>
+        </li>
+        <li>
+          <span class="values-num">04</span>
+          <div>
+            <h4>Made here</h4>
+            <p>Designed and built from Irun, Gipuzkoa. Independent, small, and proud of it.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">Mokutxo</div>
+    <div class="footer-location">Irun · Gipuzkoa · Basque Country</div>
+    <div class="footer-copy">© 2026 Mokutxo. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
